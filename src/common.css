@@ -3,6 +3,7 @@
     border: 1px solid black;
 }
 .child{
+    font-size: 20px;
     color: blue;
     text-align: center;
     background: pink url(/static/img/github.png) left no-repeat;
