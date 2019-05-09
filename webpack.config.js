@@ -4,13 +4,25 @@ const copyPlugin = require("copy-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const webpack = require('webpack')
 const path = require("path")
 
 module.exports = {
-	// mode:'production',
+	mode:'development',
 	entry: {
 		index: "./src/index.js",
 		vendor: "./src/vendor.js"
+	},
+	devtool: 'inline-source-map',
+	devServer: {
+		contentBase: '/dist',
+		compress: true,
+		port: 8888,
+		hot: true,
+		clientLogLevel: 'none'
+	},
+	resolve:{
+		extensions:[".js",".css"]
 	},
 	module: {
 		rules: [
@@ -28,7 +40,7 @@ module.exports = {
 				loader: 'url-loader',
 				options: {
 					limit: 10000,
-					name: '[path][name].[ext]'
+					name: '[path][name].[hash].[ext]'
 				}
 			}
 		]
@@ -44,11 +56,12 @@ module.exports = {
 			to: "static"
 		}]),
 		new MiniCssExtractPlugin({
-			filename: "static/css/[name].[contenthash].css"
-		})
+			filename: "static/css/main.[hash].css"
+		}),
+		new webpack.HotModuleReplacementPlugin()
 	],
 	output: {
-		filename: "static/js/[name].[contenthash].js",
+		filename: "static/js/[name].[hash].js",
 		path: path.resolve(__dirname,"./dist")
 	},
 	optimization: {

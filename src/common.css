@@ -1,11 +1,12 @@
 
 .parent{
-    border: 1px solid black;
+    border: 1px solid blue;
+    border-radius: 5px;
 }
 .child{
     font-size: 20px;
     color: blue;
     text-align: center;
-    background: pink url(/static/img/github.png) left no-repeat;
+    background: lightblue url(/static/img/github.png) left no-repeat;
     background-size: contain;
 }

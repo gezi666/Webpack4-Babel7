@@ -4,10 +4,14 @@
   "description": "",
   "private": true,
   "scripts": {
+    "start": "webpack-dev-server --progress --open --info=false",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --progress"
   },
-  "keywords": ["webpack4","babel7"],
+  "keywords": [
+    "webpack4",
+    "babel7"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -25,7 +29,8 @@
     "uglifyjs-webpack-plugin": "^2.1.2",
     "url-loader": "^1.1.2",
     "webpack": "^4.30.0",
-    "webpack-cli": "^3.3.2"
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.3.1"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4"
